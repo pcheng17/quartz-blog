@@ -8,8 +8,8 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      //GitHub: "https://github.com/pcheng17",
+      //"Discord Community": "https://discord.gg/cRFFHYye7t",
     },
   }),
 }
@@ -24,21 +24,24 @@ export const defaultContentPageLayout: PageLayout = {
   ],
   left: [
     Component.PageTitle(),
-    Component.MobileOnly(Component.Spacer()),
-    Component.Search(),
-    Component.Darkmode(),
+    //Component.Darkmode(),
+    Component.DesktopOnly(Component.TableOfContents()),
     Component.DesktopOnly(Component.Explorer()),
   ],
   right: [
-    Component.Graph(),
-    Component.DesktopOnly(Component.TableOfContents()),
+    //Component.Graph(),
+    Component.Search(),
     Component.Backlinks(),
   ],
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
+  beforeBody: [
+    Component.Breadcrumbs(),
+    Component.ArticleTitle(),
+    Component.ContentMeta()
+  ],
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),

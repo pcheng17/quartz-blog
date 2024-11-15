@@ -6,7 +6,8 @@ html {
   scroll-behavior: smooth;
   text-size-adjust: none;
   overflow-x: hidden;
-  width: 100vw;
+  width: 90vw;
+  margin: 0 auto;
 }
 
 body,
@@ -353,6 +354,7 @@ h6 {
 // typography improvements
 h1 {
   font-size: 1.75rem;
+  font-weight: $semiBoldWeight;
   margin-top: 2.25rem;
   margin-bottom: 1rem;
 }
