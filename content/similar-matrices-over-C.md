@@ -34,5 +34,4 @@ Finally, because we showed earlier that $ AQ_1 = Q_1B $ and $ AQ_2 = Q_2 B $, we
 $$
 AQ_1 + \alpha AQ_2 = Q_1B + \alpha Q_2B \quad \implies \quad A(Q_1 + \alpha Q_2) = (Q_1 + \alpha Q_2)B,
 $$
-and therefore, there exists an invertible matrix $P \in \mathbb{R}^{n \times n}$ such that $AP = PB$.
-
+and therefore, there exists an invertible matrix $P \in \mathbb{R}^{n \times n}$ such that $AP = PB$. $\quad\square$
