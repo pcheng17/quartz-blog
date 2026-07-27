@@ -260,7 +260,7 @@ ${stylesheet.join("\n\n")}
 
   /* Tags */
   --tag-background: var(--highlight);
-  --tag-color: var(--secondary);
+  --tag-color: var(--tertiary);
   --tag-background-hover: var(--lightgray);
 
   /* Misc */
@@ -331,7 +331,7 @@ ${stylesheet.join("\n\n")}
 
   /* Tags */
   --tag-background: var(--highlight);
-  --tag-color: var(--secondary);
+  --tag-color: var(--tertiary);
   --tag-background-hover: var(--lightgray);
 
   /* Misc */

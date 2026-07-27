@@ -1,3 +1,76 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+html {
+  font-size: 16px;
+}
+
+.page-title {
+  font-weight: 300;
+}
+
+.tags a.tag-link {
+  font-size: 0.85rem;
+  color: var(--tag-color);
+
+  &:hover {
+    background: color-mix(in srgb, var(--tertiary) 20%, transparent);
+    color: var(--tag-color);
+  }
+}
+
+// Remove the desktop Explorer's fold toggle (icon + "Explorer" label) entirely;
+// it should just always show the full file list. Mobile
+// keeps its own slide-out toggle, which is a separate button.
+// @media all and ($desktop) {
+//   .explorer-toggle.desktop-explorer {
+//     display: none;
+//   }
+// }
+
+// Icon-only search button at all widths (the default is a full bordered bar with a "Search" label.
+.search > .search-button {
+  border: none;
+  width: auto;
+  height: 20px;
+  padding: 0;
+
+  > p {
+    display: none;
+  }
+
+  svg {
+    width: 16px;
+    min-width: 16px;
+    margin: 0;
+  }
+}
+
+// Match the dark-mode icon to the same 16px size as the search icon (default
+// is 20px). The plugin's own stylesheet loads after this file and has the
+// same specificity, so "button.darkmode" (not just ".darkmode") is needed to
+// actually win the tie. Icon is absolutely positioned, so both top and left
+// need to be recentered for the new, smaller size.
+button.darkmode svg {
+  width: 16px;
+  height: 16px;
+  top: calc(50% - 8px);
+  left: calc(50% - 8px);
+}
+
+// Nudge the icons down instead of touching the title's margin further because
+// the Corben font has a bit of extra space above the letters.
+.search > .search-button,
+button.darkmode {
+  position: relative;
+  top: 6px;
+}
+
+// Hacks to get the dark-mode button to line up with the search button.
+button.darkmode {
+  height: 20px;
+}
+div:has(> button.darkmode) {
+  height: 20px;
+}

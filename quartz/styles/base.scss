@@ -113,6 +113,8 @@ a {
       padding: 0;
     }
     &.tag-link {
+      color: var(--tag-color);
+
       &::before {
         content: "#";
       }

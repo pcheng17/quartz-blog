@@ -72,6 +72,12 @@ function extractPluginName(source: PluginSource): string {
     const match = url.match(/\/([^/]+?)(?:\.git)?(?:#|$)/)
     return match?.[1] ?? source
   }
+  // Plain npm specifier, e.g. "@quartz-community/footer" or "footer" — take
+  // the last path segment so scoped packages resolve to their bare name.
+  if (source.includes("/")) {
+    const parts = source.split("/")
+    return parts[parts.length - 1]
+  }
   return source
 }
 
