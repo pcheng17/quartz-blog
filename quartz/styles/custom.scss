@@ -10,6 +10,13 @@ html {
   font-weight: 300;
 }
 
+// article-title/content-meta have no per-page option to hide, so scope both
+// to the homepage via its body[data-slug] attribute instead.
+// body[data-slug="index"] .article-title,
+body[data-slug="index"] .content-meta {
+  display: none;
+}
+
 .tags a.tag-link {
   font-size: 0.85rem;
   color: var(--tag-color);
