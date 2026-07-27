@@ -10,6 +10,28 @@ html {
   font-weight: 300;
 }
 
+// Auto-prepend a bolded "Proof." label to any proof wrapped in
+// <div class="proof">. Targets the FIRST paragraph directly (not the
+// wrapper) so it renders inline as part of that paragraph's own first
+// line, rather than as a separate block above it. Styling matches the
+// site's real <strong> (base.scss: font-weight: $semiBoldWeight; color:
+// var(--dark)) so it's visually identical to hand-typed bold text.
+.proof > p:first-child::before {
+  content: "Proof. ";
+  font-weight: 600;
+  color: var(--dark);
+}
+
+// Auto-append a QED tombstone to any proof wrapped in <div class="proof">.
+// Must target the LAST PARAGRAPH itself, not the wrapping div — a float
+// only hugs into leftover space on a line box within its own element; if
+// it's generated after the paragraph (as a sibling), it can't rise back up
+// into that paragraph's already-laid-out last line, so it drops below it.
+.proof > p:last-child::after {
+  content: "\25A0";
+  float: right;
+}
+
 // article-title/content-meta have no per-page option to hide, so scope both
 // to the homepage via its body[data-slug] attribute instead.
 // body[data-slug="index"] .article-title,

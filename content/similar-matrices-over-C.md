@@ -13,7 +13,9 @@ In other words, $A$ and $B$ are similar over $\mathbb{R}$ as well.
 
 At first, this seems like a crazy claim, right? How can it be possible that two matrices that are similar over $\mathbb{C}$ are necessarily similar over $\mathbb{R} \subset \mathbb{C}$?
 
-**Proof.** Let $A$, $B$, and $Q$ be as stated above. We can decompose $Q$ into its real and imaginary components, $Q = Q_1 + i Q_2$, where $Q_1, Q_2 \in \mathbb{R}^{n \times n}$. Plugging this into $AQ = QB$ yields
+<div class="proof">
+
+Let $A$, $B$, and $Q$ be as stated above. We can decompose $Q$ into its real and imaginary components, $Q = Q_1 + i Q_2$, where $Q_1, Q_2 \in \mathbb{R}^{n \times n}$. Plugging this into $AQ = QB$ yields
 $$
 A(Q_1 + i Q_2) = (Q_1 + i Q_2)B \quad \implies \quad AQ_1 + i AQ_2 = Q_1 B + i Q_2 B.
 $$
@@ -34,4 +36,6 @@ Finally, because we showed earlier that $ AQ_1 = Q_1B $ and $ AQ_2 = Q_2 B $, we
 $$
 AQ_1 + \alpha AQ_2 = Q_1B + \alpha Q_2B \quad \implies \quad A(Q_1 + \alpha Q_2) = (Q_1 + \alpha Q_2)B,
 $$
-and therefore, there exists an invertible matrix $P \in \mathbb{R}^{n \times n}$ such that $AP = PB$. $\quad\square$
+and therefore, there exists an invertible matrix $P \in \mathbb{R}^{n \times n}$ such that $AP = PB$.
+
+</div>
