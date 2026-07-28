@@ -6,8 +6,32 @@ html {
   font-size: 16px;
 }
 
+// base.scss sets normal body text to --darkgray (via `body` and a broad
+// selector covering p/ul/li/etc individually, which take priority over
+// inheritance from `body` since they set color explicitly). Overriding both
+// here, after base.scss loads, switches ordinary text to --dark instead.
+// Links keep their own --secondary color from a later, more specific rule.
+// body,
+// p,
+// ul,
+// text,
+// tr,
+// td,
+// li,
+// ol,
+// .katex,
+// .math,
+// .typst-doc,
+// g[class~="typst-text"] {
+//   color: var(--dark);
+// }
+
 .page-title {
-  font-weight: 300;
+  font-weight: 400;
+}
+
+a:not(.tag-link):hover {
+  color: var(--tertiary);
 }
 
 // Auto-prepend a bolded "Proof." label to any proof wrapped in
@@ -102,4 +126,83 @@ button.darkmode {
 }
 div:has(> button.darkmode) {
   height: 20px;
+}
+
+// ---- Tufte sidenotes / marginnotes ----
+// Authored as raw HTML in markdown:
+//   numbered:   <label class="sidenote-number"></label><span class="sidenote">...</span>
+//   unnumbered: <span class="marginnote">...</span>
+
+article {
+  counter-reset: sidenote-counter;
+}
+
+.sidenote-number {
+  counter-increment: sidenote-counter;
+}
+
+.sidenote-number::after {
+  content: counter(sidenote-counter);
+  vertical-align: super;
+  font-size: 0.7rem;
+  color: var(--secondary);
+}
+
+.sidenote::before {
+  content: counter(sidenote-counter) " ";
+  vertical-align: super;
+  font-size: 0.7rem;
+  color: var(--secondary);
+}
+
+// Desktop: float the note out of the content column into the empty 320px
+// right grid column. float:right puts the note's right edge at the content
+// edge; the negative margin-right then pushes its left edge across the 5px
+// grid gap into the right column, leaving ~1rem breathing room on each side
+// of the 20rem (320px) column.
+@media all and ($desktop) {
+  .sidenote,
+  .marginnote {
+    float: right;
+    clear: right;
+    width: 17rem;
+    margin-right: calc(-18rem - 5px);
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--darkgray);
+    position: relative;
+  }
+}
+
+// Tablet + mobile: no right column exists, so render notes inline as an
+// inset block (the always-visible Tufte fallback; no per-note IDs needed).
+@media all and not ($desktop) {
+  .sidenote,
+  .marginnote {
+    display: block;
+    margin: 1rem 0;
+    padding: 0.4rem 1rem;
+    border-left: 2px solid var(--lightgray);
+    font-size: 0.85rem;
+    color: var(--darkgray);
+  }
+}
+
+// The right sidebar is sticky and full-height and paints above the center
+// column, so when empty it would swallow clicks on links inside sidenotes.
+// Hide it entirely when empty; the grid template lives on the container, so
+// the 320px column (the sidenote landing space) is preserved on desktop.
+.sidebar.right:empty {
+  display: none;
+}
+
+// The left sidebar now holds toolbar + TOC + backlinks on article pages;
+// let it scroll if a long TOC overflows the sticky 100vh column.
+@media all and not ($mobile) {
+  .sidebar.left {
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
 }

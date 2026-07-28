@@ -1,0 +1,11 @@
+{
+  "name": "recent-lists",
+  "version": "0.0.1",
+  "private": true,
+  "quartz": {
+    "category": "component",
+    "name": "recent-lists",
+    "displayName": "Recent Lists",
+    "description": "Recent blog posts and notes for the left sidebar"
+  }
+}

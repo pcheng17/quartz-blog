@@ -26,6 +26,7 @@ import {
 import { loadComponentsFromPackage } from "./componentLoader"
 import { loadFramesFromPackage } from "./frameLoader"
 import { componentRegistry } from "../../components/registry"
+import { registerLocalComponents } from "../../components/localComponents"
 import { getCondition } from "./conditions"
 
 const CONFIG_YAML_PATH = path.join(process.cwd(), "quartz.config.yaml")
@@ -495,7 +496,8 @@ export async function loadQuartzConfig(
 
   // Import built-in plugins
   const builtinPlugins = await import("../index")
-  const builtinTransformers: unknown[] = []
+  const { Sidenotes } = await import("../transformers/sidenotes")
+  const builtinTransformers: unknown[] = [Sidenotes()]
   const builtinEmitters = [
     builtinPlugins.ComponentResources(),
     builtinPlugins.Assets(),
@@ -642,6 +644,7 @@ export async function loadQuartzLayout(layoutOverrides?: {
   defaults: Partial<FullPageLayout>
   byPageType: Record<string, Partial<FullPageLayout>>
 }> {
+  registerLocalComponents()
   const json = readPluginsJson()
 
   if (!json) {
