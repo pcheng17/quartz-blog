@@ -2,7 +2,19 @@ import { QuartzComponentProps } from "../../components/types"
 
 export type ConditionPredicate = (props: QuartzComponentProps) => boolean
 
+const isListing: ConditionPredicate = (props) => {
+  const slug = props.fileData.slug ?? ""
+  return (
+    slug === "index" || // homepage
+    slug.endsWith("/index") || // folder pages (real or virtual)
+    slug === "tags" ||
+    slug.startsWith("tags/") // tag pages
+  )
+}
+
 const builtinConditions: Record<string, ConditionPredicate> = {
+  "is-listing": isListing,
+  "is-article": (props) => !isListing(props),
   "not-index": (props) => props.fileData.slug !== "index",
   "has-tags": (props) => {
     const tags = props.fileData.frontmatter?.tags

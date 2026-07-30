@@ -3,7 +3,7 @@ configuration:
   pageTitle: pcheng.dev
   pageTitleSuffix: ""
   enableSPA: true
-  enablePopovers: true
+  enablePopovers: false
   analytics:
     provider: plausible
   locale: en-US
@@ -18,7 +18,7 @@ configuration:
     typography:
       header:
         name: Corben
-        weights: [300]
+        weights: [400]
       body: Source Serif 4
       code: JetBrains Mono
     colors:
@@ -76,8 +76,10 @@ plugins:
     enabled: true
     order: 50
     layout:
-      position: right
-      priority: 30
+      position: left
+      priority: 60
+      display: desktop-only
+      condition: is-article
   - source: "@quartz-community/crawl-links"
     enabled: true
     options:
@@ -153,12 +155,30 @@ plugins:
   - source: "@quartz-community/tag-page"
     enabled: true
   - source: "@quartz-community/explorer"
-    enabled: true
+    enabled: false
     options:
       folderDefaultState: open
     layout:
       position: left
       priority: 50
+  - source: "./local-plugins/recent-lists"
+    enabled: true
+    options:
+      dateType: created
+      sections:
+        - title: Blog
+          folder: blog
+          limit: 5
+          linkText: all posts
+        - title: Notes
+          folder: notes
+          limit: 5
+          linkText: all notes
+    layout:
+      position: left
+      priority: 50
+      display: desktop-only
+      condition: is-listing
   - source: "@quartz-community/graph"
     enabled: false
     layout:
@@ -173,8 +193,10 @@ plugins:
   - source: "@quartz-community/backlinks"
     enabled: true
     layout:
-      position: right
-      priority: 50
+      position: left
+      priority: 70
+      display: desktop-only
+      condition: is-article
   - source: "@quartz-community/article-title"
     enabled: true
     layout:
