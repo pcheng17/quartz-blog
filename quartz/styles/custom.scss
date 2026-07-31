@@ -26,6 +26,13 @@ html {
 //   color: var(--dark);
 // }
 
+// rehype-typst sets each equation's SVG width/height in em, relative to the
+// font-size in scope, so scaling .typst-doc scales the rendered math (same
+// mechanism as KaTeX's font-size-relative sizing).
+.typst-doc {
+  font-size: 1.1em;
+}
+
 .page-title {
   font-weight: 400;
 }
