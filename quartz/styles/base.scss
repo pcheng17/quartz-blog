@@ -20,7 +20,7 @@ body {
   box-sizing: border-box;
   background-color: var(--light);
   font-family: var(--bodyFont);
-  color: var(--darkgray);
+  color: var(--dark);
 }
 
 .text-highlight {
@@ -30,7 +30,7 @@ body {
 }
 ::selection {
   background: color-mix(in srgb, var(--tertiary) 60%, rgba(255, 255, 255, 0));
-  color: var(--darkgray);
+  color: var(--dark);
 }
 
 p,
@@ -46,14 +46,14 @@ ul,
 .math,
 .typst-doc,
 g[class~="typst-text"] {
-  color: var(--darkgray);
-  fill: var(--darkgray);
+  color: var(--dark);
+  fill: var(--dark);
   overflow-wrap: break-word;
   text-wrap: pretty;
 }
 
 path[class~="typst-shape"] {
-  stroke: var(--darkgray);
+  stroke: var(--dark);
 }
 
 .math {

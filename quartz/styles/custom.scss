@@ -6,26 +6,6 @@ html {
   font-size: 16px;
 }
 
-// base.scss sets normal body text to --darkgray (via `body` and a broad
-// selector covering p/ul/li/etc individually, which take priority over
-// inheritance from `body` since they set color explicitly). Overriding both
-// here, after base.scss loads, switches ordinary text to --dark instead.
-// Links keep their own --secondary color from a later, more specific rule.
-// body,
-// p,
-// ul,
-// text,
-// tr,
-// td,
-// li,
-// ol,
-// .katex,
-// .math,
-// .typst-doc,
-// g[class~="typst-text"] {
-//   color: var(--dark);
-// }
-
 // rehype-typst sets each equation's SVG width/height in em, relative to the
 // font-size in scope, so scaling .typst-doc scales the rendered math (same
 // mechanism as KaTeX's font-size-relative sizing).
@@ -178,7 +158,7 @@ article {
     margin-bottom: 1rem;
     font-size: 0.8rem;
     line-height: 1.5;
-    color: var(--darkgray);
+    color: var(--dark);
     position: relative;
   }
 }
@@ -193,7 +173,7 @@ article {
     padding: 0.4rem 1rem;
     border-left: 2px solid var(--lightgray);
     font-size: 0.85rem;
-    color: var(--darkgray);
+    color: var(--dark);
   }
 }
 
@@ -212,4 +192,10 @@ article {
     overflow-y: auto;
     scrollbar-width: thin;
   }
+}
+
+// Disable the table-of-contents plugin's opacity fade-in as entries scroll
+// into view (it ships with `transition: 0.5s ease opacity, ...` on load).
+.toc-content.overflow > li > a {
+  transition: none;
 }
