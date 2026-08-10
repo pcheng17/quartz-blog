@@ -1,5 +1,5 @@
 ---
-title: A really neat proof in linear algebra
+title: Similarity of matrices over $CC$
 tags: [math, linear-algebra]
 aliases: [similar-matrices-over-C]
 ---

@@ -101,11 +101,11 @@ button.darkmode svg {
 
 // Nudge the icons down instead of touching the title's margin further because
 // the Corben font has a bit of extra space above the letters.
-.search > .search-button,
-button.darkmode {
-  position: relative;
-  top: 5px;
-}
+// .search > .search-button,
+// button.darkmode {
+//   position: relative;
+//   top: 5px;
+// }
 
 // Hacks to get the dark-mode button to line up with the search button.
 button.darkmode {

@@ -49,6 +49,10 @@ export default ((userOpts?: Partial<Options>) => {
             .sort((a, b) => (fileDate(b)?.getTime() ?? 0) - (fileDate(a)?.getTime() ?? 0))
             .slice(0, section.limit ?? 5)
 
+          if (pages.length === 0) {
+            return null
+          }
+
           return (
             <div class="recent-section">
               <h2>{section.title}</h2>
